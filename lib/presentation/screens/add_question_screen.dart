@@ -88,6 +88,8 @@ class _AddQuestionScreenState extends State<AddQuestionScreen> {
                     onChanged: provider.onValueChanged,
                     itemHeight: 60,
                     style: const TextStyle(fontSize: 18, color: Colors.black),
+                    menuMaxHeight: 180.0,
+                    enableFeedback: true,
                     underline: Container(
                       height: 2,
                       color: Colors.black87,
