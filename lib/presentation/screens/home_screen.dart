@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mstack/data/model/question_model.dart';
-import 'package:mstack/logic/cubit/question_cubit/question_cubit.dart';
+import 'package:mstack/logic/cubit/question_cubit/user_question_cubit.dart';
 import 'package:mstack/presentation/screens/add_question_screen.dart';
-import 'package:mstack/providers/question_provider.dart';
-import 'package:provider/provider.dart';
+import 'package:mstack/presentation/widgets/question_tile.dart';
+import 'package:mstack/providers/user_like_question_provider.dart';
 
 import '../../core/constant/constant.dart';
 
@@ -20,8 +20,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<QuestionProvider>().fetchLikeQuestionData();
-    BlocProvider.of<QuestionCubit>(context).fetchQuestion();
+    context.read<UserLikeQuestionProvider>().fetchLikeQuestionData();
+    BlocProvider.of<UserQuestionCubit>(context).fetchQuestion();
   }
 
   @override
@@ -38,11 +38,11 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       drawer: const Drawer(),
-      body: BlocBuilder<QuestionCubit, QuestionState>(
+      body: BlocBuilder<UserQuestionCubit, UserQuestionState>(
         builder: (context, state) {
-          if (state is QuestionErrorState) {
+          if (state is UserQuestionErrorState) {
             return Center(child: Text(state.message.toString()));
-          } else if (state is QuestionLoaddedState) {
+          } else if (state is UserQuestionLoaddedState) {
             return buildQuestions(state.questions);
           } else {
             return const Center(
@@ -63,77 +63,14 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget buildQuestions(List<QuestionModel> questions) {
     return RefreshIndicator(
       onRefresh: () async { 
-        BlocProvider.of<QuestionCubit>(context).fetchQuestion();
+        BlocProvider.of<UserQuestionCubit>(context).fetchQuestion();
        },
       child: ListView.separated(
         physics:
             const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         itemBuilder: (context, index) {
           final question = questions[index];
-          return Container(
-            padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 5),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  question.question,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style:
-                      const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
-                ),
-                const SizedBox(height: 2),
-                Text(
-                  question.description,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Consumer<QuestionProvider>(
-                  builder: (context, provider, child) {
-                    int like = question.likes;
-                    if (!question.userLikes.contains(provider.uid) &&
-                        provider.likeQuestionsId.contains(question.sId)) {
-                      like += 1;
-                    } else if (question.userLikes.contains(provider.uid) &&
-                        !provider.likeQuestionsId.contains(question.sId)) {
-                      like -= 1;
-                    }
-                    return Row(
-                      children: [
-                        const SizedBox(width: 5),
-                        GestureDetector(
-                          onTap: () {
-                            provider.addLike(sId: question.sId!);
-                          },
-                          child: Icon(
-                            provider.likeQuestionsId.contains(question.sId)
-                                ? Icons.favorite
-                                : Icons.favorite_border,
-                            size: 18,
-                            color: Colors.redAccent,
-                          ),
-                        ),
-                        const SizedBox(width: 10),
-                        Text("$like likes"),
-                        const Spacer(),
-                        Text(
-                          question.cname,
-                          style: const TextStyle(fontSize: 15),
-                        ),
-                        const SizedBox(width: 10),
-                      ],
-                    );
-                  },
-                ),
-              ],
-            ),
-          );
+          return QuestionTile(question: question);
         },
         separatorBuilder: (context, index) {
           return const Divider(thickness: 2);

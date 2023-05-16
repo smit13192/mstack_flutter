@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mstack/data/model/category_model.dart';
 import 'package:mstack/data/repositories/category_repository.dart';
-import 'package:mstack/logic/cubit/question_cubit/question_cubit.dart';
+import 'package:mstack/logic/cubit/question_cubit/user_question_cubit.dart';
 import 'package:mstack/logic/cubit/user_cubit/user_cubit.dart';
 
 class AddQuestionProvider extends ChangeNotifier {
@@ -29,7 +29,7 @@ class AddQuestionProvider extends ChangeNotifier {
     String uid = state.userModel.sId!;
     String question = questionController.text.trim();
     String description = descriptionController.text.trim();
-    BlocProvider.of<QuestionCubit>(context).addQustion(
+    BlocProvider.of<UserQuestionCubit>(context).addUserQuestion(
       cid: selectedCategory,
       description: description,
       question: question,
