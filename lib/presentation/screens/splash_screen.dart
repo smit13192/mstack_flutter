@@ -40,8 +40,8 @@ class SpalshScrren extends StatelessWidget {
               color: Colors.white,
               letterSpacing: 2,
               fontSize: 50,
-              fontWeight: FontWeight.w200,
             ),
+            
           ),
         ),
       ),
