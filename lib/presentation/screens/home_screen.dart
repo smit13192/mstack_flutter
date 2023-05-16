@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mstack/data/model/question_model.dart';
 import 'package:mstack/logic/cubit/question_cubit/user_question_cubit.dart';
 import 'package:mstack/presentation/screens/add_question_screen.dart';
+import 'package:mstack/presentation/widgets/primary_drawer.dart';
 import 'package:mstack/presentation/widgets/question_tile.dart';
 import 'package:mstack/providers/user_like_question_provider.dart';
 
@@ -37,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
           style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w500),
         ),
       ),
-      drawer: const Drawer(),
+      drawer: const PrimaryDrawer(),
       body: BlocBuilder<UserQuestionCubit, UserQuestionState>(
         builder: (context, state) {
           if (state is UserQuestionErrorState) {

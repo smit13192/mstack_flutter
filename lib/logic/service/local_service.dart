@@ -19,7 +19,7 @@ class LocalStorage {
     log("detail saved");
   }
 
-  static Future<Map<String,dynamic>> fetchUserDetails() async {
+  static Future<Map<String, dynamic>> fetchUserDetails() async {
     SharedPreferences instance = await SharedPreferences.getInstance();
     String? uid = instance.getString("uid");
     String? username = instance.getString("username");
@@ -28,11 +28,16 @@ class LocalStorage {
     int? age = instance.getInt("age");
 
     return {
-      "uid":uid,
-      "username":username,
-      "email":email,
-      "password":password,
-      "age":age,
+      "uid": uid,
+      "username": username,
+      "email": email,
+      "password": password,
+      "age": age,
     };
+  }
+
+  static Future<void> clearData() async {
+    SharedPreferences instance = await SharedPreferences.getInstance();
+    await instance.clear();
   }
 }

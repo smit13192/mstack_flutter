@@ -67,7 +67,8 @@ class UserCubit extends Cubit<UserState> {
     }
   }
 
-  void logOut() {
+  void logOut() async {
+    await LocalStorage.clearData();
     emit(UserLoggedOutState());
   }
 }
