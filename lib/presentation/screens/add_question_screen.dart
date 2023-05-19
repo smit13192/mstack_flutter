@@ -3,20 +3,9 @@ import 'package:mstack/presentation/widgets/primary_button.dart';
 import 'package:mstack/providers/add_question_provider.dart';
 import 'package:provider/provider.dart';
 
-class AddQuestionScreen extends StatefulWidget {
+class AddQuestionScreen extends StatelessWidget {
   static const String routeName = "/AddQuestionScreen";
   const AddQuestionScreen({super.key});
-
-  @override
-  State<AddQuestionScreen> createState() => _AddQuestionScreenState();
-}
-
-class _AddQuestionScreenState extends State<AddQuestionScreen> {
-  @override
-  void initState() {
-    context.read<AddQuestionProvider>().fetchCategory();
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {

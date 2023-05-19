@@ -7,7 +7,9 @@ import 'package:mstack/logic/cubit/user_cubit/user_cubit.dart';
 
 class AddQuestionProvider extends ChangeNotifier {
   BuildContext context;
-  AddQuestionProvider(this.context);
+  AddQuestionProvider(this.context) {
+    fetchCategory();
+  }
 
   TextEditingController questionController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
