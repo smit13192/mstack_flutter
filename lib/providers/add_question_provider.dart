@@ -17,7 +17,7 @@ class AddQuestionProvider extends ChangeNotifier {
 
   List<CategoryModel> _listCategory = [];
 
-  String selectedCategory = "";
+  String selectedCategory = '';
 
   fetchCategory() async {
     _listCategory = await _repository.getAllCategory();

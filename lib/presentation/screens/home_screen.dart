@@ -10,7 +10,7 @@ import 'package:mstack/providers/user_like_question_provider.dart';
 import '../../core/constant/constant.dart';
 
 class HomeScreen extends StatefulWidget {
-  static const String routeName = "/HomeScreen";
+  static const String routeName = '/HomeScreen';
   const HomeScreen({super.key});
 
   @override
@@ -55,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
         onPressed: () =>
             Navigator.pushNamed(context, AddQuestionScreen.routeName),
         backgroundColor: Colors.black87,
-        tooltip: "Add Question",
+        tooltip: 'Add Question',
         child: const Icon(Icons.add),
       ),
     );
@@ -63,12 +63,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget buildQuestions(List<QuestionModel> questions) {
     return RefreshIndicator(
-      onRefresh: () async { 
+      onRefresh: () async {
         BlocProvider.of<UserQuestionCubit>(context).fetchQuestion();
-       },
+      },
       child: ListView.separated(
-        physics:
-            const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+        physics: const BouncingScrollPhysics(
+            parent: AlwaysScrollableScrollPhysics()),
         itemBuilder: (context, index) {
           final question = questions[index];
           return QuestionTile(question: question);

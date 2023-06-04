@@ -1,4 +1,5 @@
 import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,6 +11,7 @@ import 'package:mstack/providers/auth/login_provider.dart';
 import 'package:mstack/providers/auth/register_provider.dart';
 import 'package:mstack/providers/user_like_question_provider.dart';
 import 'package:provider/provider.dart';
+
 import 'presentation/screens/splash_screen.dart';
 
 void main(List<String> args) async {
@@ -59,7 +61,7 @@ class MyApp extends StatelessWidget {
 class MyBlocObserver extends BlocObserver {
   @override
   void onChange(BlocBase bloc, Change change) {
-    log("change in $bloc: $change");
+    log('change in $bloc: $change');
     super.onChange(bloc, change);
   }
 }

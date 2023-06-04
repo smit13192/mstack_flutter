@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
-const String baseUrl = "http://192.168.1.7:5000";
-const Map<String, dynamic> defaultHeader = {"Content-Type": "application/json"};
+const String baseUrl = 'https://mstack-ms.onrender.com';
+const Map<String, dynamic> defaultHeader = {'Content-Type': 'application/json'};
 
 class Api {
   final Dio _dio = Dio();
@@ -33,7 +33,7 @@ class ApiResponse {
     return ApiResponse(
       success: data['success'],
       data: data['data'],
-      message: data['message'] ?? "",
+      message: data['message'] ?? '',
     );
   }
 }

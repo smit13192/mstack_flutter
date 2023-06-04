@@ -59,7 +59,7 @@ class QuestionTile extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 10),
-                  Text("$like likes"),
+                  Text('$like likes'),
                   const Spacer(),
                   Text(
                     question.cname,

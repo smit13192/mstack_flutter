@@ -16,10 +16,10 @@ class QuestionRepository {
     try {
       Response response = await _api.getRequest.post('/questions/add',
           data: jsonEncode({
-            "uid": uid,
-            "cid": cid,
-            "question": question,
-            "description": description,
+            'uid': uid,
+            'cid': cid,
+            'question': question,
+            'description': description,
           }));
       ApiResponse apiResponse = ApiResponse.fromResponse(response);
       if (!apiResponse.success) {
@@ -46,6 +46,4 @@ class QuestionRepository {
       rethrow;
     }
   }
-
-  
 }

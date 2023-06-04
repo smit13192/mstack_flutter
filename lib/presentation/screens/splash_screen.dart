@@ -1,13 +1,15 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mstack/logic/cubit/user_cubit/user_cubit.dart';
 import 'package:mstack/presentation/screens/auth/login_support.dart';
 import 'package:mstack/presentation/screens/home_screen.dart';
+
 import '../../core/constant/constant.dart';
 
 class SpalshScrren extends StatelessWidget {
-  static const String routeName = "/SplashScreen";
+  static const String routeName = '/SplashScreen';
   const SpalshScrren({super.key});
 
   @override
@@ -41,7 +43,6 @@ class SpalshScrren extends StatelessWidget {
               letterSpacing: 2,
               fontSize: 50,
             ),
-            
           ),
         ),
       ),

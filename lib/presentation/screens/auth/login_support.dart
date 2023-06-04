@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+
 import 'login_page.dart';
 import 'register_screen.dart';
 
 class LoginSupport extends StatefulWidget {
-  static const String routeName = "/LoginSupport";
+  static const String routeName = '/LoginSupport';
   const LoginSupport({super.key});
 
   @override

@@ -14,12 +14,12 @@ class UserRepository {
     required int age,
   }) async {
     try {
-      Response response = await _api.getRequest.post("/users/createUser",
+      Response response = await _api.getRequest.post('/users/createUser',
           data: jsonEncode({
-            "username": username,
-            "email": email,
-            "password": password,
-            "age": age,
+            'username': username,
+            'email': email,
+            'password': password,
+            'age': age,
           }));
       ApiResponse apiResponse = ApiResponse.fromResponse(response);
       if (!apiResponse.success) {
@@ -38,10 +38,10 @@ class UserRepository {
     required String password,
   }) async {
     try {
-      Response response = await _api.getRequest.post("/users/sighIn",
+      Response response = await _api.getRequest.post('/users/sighIn',
           data: jsonEncode({
-            "email": email,
-            "password": password,
+            'email': email,
+            'password': password,
           }));
       ApiResponse apiResponse = ApiResponse.fromResponse(response);
       if (!apiResponse.success) {

@@ -10,8 +10,8 @@ class LikeQuestionRepository {
     try {
       Response response = await _api.getRequest.post('/questions/addLike',
           data: jsonEncode({
-            "_id": sId,
-            "uid": uid,
+            '_id': sId,
+            'uid': uid,
           }));
       ApiResponse apiResponse = ApiResponse.fromResponse(response);
       if (!apiResponse.success) {

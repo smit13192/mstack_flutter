@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
+
 import '../../../core/constant/constant.dart';
 import '../../../logic/cubit/user_cubit/user_cubit.dart';
 import '../../../providers/auth/register_provider.dart';
@@ -22,7 +23,7 @@ class RegisterScreen extends StatelessWidget {
     return BlocListener<UserCubit, UserState>(
       listener: (context, state) {
         if (state is UserLoggedInState) {
-          Fluttertoast.showToast(msg: "Log in successfully");
+          Fluttertoast.showToast(msg: 'Log in successfully');
           Navigator.pushNamedAndRemoveUntil(
               context, HomeScreen.routeName, (route) => false);
         } else if (state is UserErrorState) {
@@ -38,8 +39,7 @@ class RegisterScreen extends StatelessWidget {
               child: Form(
                 key: provider.form,
                 child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 30.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 30.0),
                   child: Column(
                     children: [
                       const SizedBox(height: 40),
@@ -57,27 +57,27 @@ class RegisterScreen extends StatelessWidget {
                         keyboardType: TextInputType.name,
                         controller: provider.usernameController,
                         validator: (value) =>
-                            (value!.isEmpty || value.contains(" "))
-                                ? "Enter valid username"
+                            (value!.isEmpty || value.contains(' '))
+                                ? 'Enter valid username'
                                 : null,
                         suffixIcon: IconButton(
                           icon: const Icon(Icons.clear),
                           onPressed: () => provider.usernameController.clear(),
                         ),
-                        hintText: "Enter username",
+                        hintText: 'Enter username',
                       ),
                       const SizedBox(height: 16),
                       PrimaryField(
                         keyboardType: TextInputType.emailAddress,
                         controller: provider.emailController,
                         validator: (value) => !EmailValidator.validate(value!)
-                            ? "Enter valid email"
+                            ? 'Enter valid email'
                             : null,
                         suffixIcon: IconButton(
                           icon: const Icon(Icons.clear),
                           onPressed: () => provider.emailController.clear(),
                         ),
-                        hintText: "Enter Email",
+                        hintText: 'Enter Email',
                       ),
                       const SizedBox(height: 16),
                       PrimaryField(
@@ -85,14 +85,15 @@ class RegisterScreen extends StatelessWidget {
                         seen: provider.seen,
                         controller: provider.passwordController,
                         validator: (value) {
-                          if (value!.isEmpty || value.contains(" ")) {
-                            return "Enter valid password";
+                          if (value!.isEmpty || value.contains(' ')) {
+                            return 'Enter valid password';
                           }
                           if (value.length < 8) {
-                            return "Password length must be more than 7";
+                            return 'Password length must be more than 7';
                           }
-                          if (value != provider.confirmPasswordController.text) {
-                            return "Password and confirm password different";
+                          if (value !=
+                              provider.confirmPasswordController.text) {
+                            return 'Password and confirm password different';
                           }
                           return null;
                         },
@@ -112,14 +113,14 @@ class RegisterScreen extends StatelessWidget {
                         seen: provider.confirmSeen,
                         controller: provider.confirmPasswordController,
                         validator: (value) {
-                          if (value!.isEmpty || value.contains(" ")) {
-                            return "Enter valid password";
+                          if (value!.isEmpty || value.contains(' ')) {
+                            return 'Enter valid password';
                           }
                           if (value.length < 8) {
-                            return "Password length must be more than 7";
+                            return 'Password length must be more than 7';
                           }
                           if (value != provider.passwordController.text) {
-                            return "Password and confirm password different";
+                            return 'Password and confirm password different';
                           }
                           return null;
                         },
@@ -139,13 +140,13 @@ class RegisterScreen extends StatelessWidget {
                         controller: provider.ageController,
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return "Enter valid age";
+                            return 'Enter valid age';
                           }
                           if (int.parse(value) <= 0) {
-                            return "age is not minimun than zero";
+                            return 'age is not minimun than zero';
                           }
                           if (int.parse(value) > 100) {
-                            return "Enter valid age";
+                            return 'Enter valid age';
                           }
                           return null;
                         },
@@ -158,12 +159,12 @@ class RegisterScreen extends StatelessWidget {
                             provider.createAccount();
                           }
                         },
-                        text: "Log In",
+                        text: 'Log In',
                       ),
                       const SizedBox(height: 10),
                       BottomLine(
-                        text1: "You have an account ",
-                        text2: "Sigh In",
+                        text1: 'You have an account ',
+                        text2: 'Sigh In',
                         onTap: onTap,
                       )
                     ],

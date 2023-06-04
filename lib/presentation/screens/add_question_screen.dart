@@ -4,7 +4,7 @@ import 'package:mstack/providers/add_question_provider.dart';
 import 'package:provider/provider.dart';
 
 class AddQuestionScreen extends StatelessWidget {
-  static const String routeName = "/AddQuestionScreen";
+  static const String routeName = '/AddQuestionScreen';
   const AddQuestionScreen({super.key});
 
   @override
@@ -20,7 +20,7 @@ class AddQuestionScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   const Text(
-                    "Add Question",
+                    'Add Question',
                     style: TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
@@ -38,7 +38,7 @@ class AddQuestionScreen extends StatelessWidget {
                     ),
                     decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: "Enter Question",
+                      hintText: 'Enter Question',
                       filled: true,
                       fillColor: Colors.grey.shade200,
                     ),
@@ -57,7 +57,7 @@ class AddQuestionScreen extends StatelessWidget {
                       ),
                       decoration: InputDecoration(
                         border: InputBorder.none,
-                        hintText: "Enter Description",
+                        hintText: 'Enter Description',
                         filled: true,
                         fillColor: Colors.grey.shade200,
                       ),
@@ -90,7 +90,7 @@ class AddQuestionScreen extends StatelessWidget {
                       provider.addQuestion();
                       Navigator.pop(context);
                     },
-                    text: "Add Question",
+                    text: 'Add Question',
                   )
                 ],
               ),

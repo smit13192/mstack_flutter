@@ -24,7 +24,7 @@ class LoginScreen extends StatelessWidget {
     return BlocListener<UserCubit, UserState>(
       listener: (context, state) {
         if (state is UserLoggedInState) {
-          Fluttertoast.showToast(msg: "Sigh in successfully");
+          Fluttertoast.showToast(msg: 'Sigh in successfully');
           Navigator.pushNamedAndRemoveUntil(
               context, HomeScreen.routeName, (route) => false);
         } else if (state is UserErrorState) {
@@ -54,13 +54,13 @@ class LoginScreen extends StatelessWidget {
                   keyboardType: TextInputType.emailAddress,
                   controller: provider.emailController,
                   validator: (value) => !EmailValidator.validate(value!)
-                      ? "Enter valid email"
+                      ? 'Enter valid email'
                       : null,
                   suffixIcon: IconButton(
                     icon: const Icon(Icons.clear),
                     onPressed: () => provider.emailController.clear(),
                   ),
-                  hintText: "Enter Email",
+                  hintText: 'Enter Email',
                 ),
                 const SizedBox(height: 16),
                 PrimaryField(
@@ -68,11 +68,11 @@ class LoginScreen extends StatelessWidget {
                   seen: provider.seen,
                   controller: provider.passwordController,
                   validator: (value) {
-                    if (value!.isEmpty || value.contains(" ")) {
-                      return "Enter valid password";
+                    if (value!.isEmpty || value.contains(' ')) {
+                      return 'Enter valid password';
                     }
                     if (value.length < 8) {
-                      return "Password length must be more than 7";
+                      return 'Password length must be more than 7';
                     }
                     return null;
                   },
@@ -91,12 +91,12 @@ class LoginScreen extends StatelessWidget {
                       provider.sighIn();
                     }
                   },
-                  text: "Sign In",
+                  text: 'Sign In',
                 ),
                 const SizedBox(height: 10),
                 BottomLine(
                   text1: "Don't have an account? ",
-                  text2: "Log In",
+                  text2: 'Log In',
                   onTap: onTap,
                 )
               ],

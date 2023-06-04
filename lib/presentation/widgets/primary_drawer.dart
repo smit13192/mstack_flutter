@@ -38,7 +38,7 @@ class PrimaryDrawer extends StatelessWidget {
             ),
             ListTile(
               leading: const Icon(Icons.logout),
-              title: const Text("Log out"),
+              title: const Text('Log out'),
               onTap: () {
                 BlocProvider.of<UserCubit>(context).logOut();
               },
